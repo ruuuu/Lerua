@@ -14,7 +14,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait  # ожидания различных событий
 from selenium.webdriver.support.ui import Select  # работа со списками
 from selenium.webdriver.support import expected_conditions as ec
-
+from random import randint
+from secrets import choice
+import string
 
 # резервирование оборудования с автризацией в начале
 class Reserve_equipment(unittest.TestCase):
@@ -67,7 +69,7 @@ class Reserve_equipment(unittest.TestCase):
         time.sleep(2)  # ждем пока загрузится старница
 
         equipment_cards = WebDriverWait(driver, 10).until(ec.presence_of_all_elements_located((By.XPATH, "//div[@class ='lm-card-wrapper']"))) # кликаем конрктено оборудовнаие
-        time.sleep(1)
+        time.sleep(4)
 
 
 
@@ -76,7 +78,7 @@ class Reserve_equipment(unittest.TestCase):
         if equipment_cards[index].is_displayed() is False:
             driver.execute_script("arguments[0].scrollIntoView(true);",
                                   equipment_cards[index])  # скриллим к этому элемементу equipment_cards[index]
-            time.sleep(2)
+            time.sleep(4)
             equipment_cards[index].click()
 
 
